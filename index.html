@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AeD Interior Designer</title>
+<meta name="description" content="AeD Interior Designer di Luigia Iannelli progetta interni, ristrutturazioni e spazi outdoor con metodo, materia e luce. Architettura su misura delle tue esigenze.">
+<meta name="theme-color" content="#6B7561">
+<style>
+  :root{
+    --sand:#F4F0E6;
+    --paper:#FBF9F4;
+    --ink:#332F26;
+    --sage:#6B7561;
+    --sage-deep:#4D5645;
+    --clay:#9B8A6E;
+    --line: rgba(51,47,38,0.14);
+    --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "URW Palladio L", Palatino, serif;
+    --sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--sand);
+    color:var(--ink);
+    font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  ::selection{background:var(--sage); color:var(--paper);}
+
+  :focus-visible{
+    outline: 2px solid var(--sage-deep);
+    outline-offset: 3px;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px;
+    height:1px;
+    background:var(--sage-deep);
+    display:inline-block;
+  }
+
+  /* ---------- SKIP LINK ---------- */
+  .skip-link{
+    position:absolute; left:-999px; top:0;
+    background:var(--ink); color:var(--paper);
+    padding:12px 18px; z-index:999; font-size:14px;
+  }
+  .skip-link:focus{ left:16px; top:16px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0;
+    z-index:100;
+    padding:22px 0;
+    transition: background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(244,240,230,0.88);
+    backdrop-filter:blur(10px);
+    padding:14px 0;
+    box-shadow:0 1px 0 var(--line);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--serif);
+    font-size:21px;
+    font-weight:500;
+    letter-spacing:0.01em;
+  }
+  .logo span{ color:var(--sage-deep); font-style:italic; }
+
+  .nav-links{
+    display:flex;
+    gap:36px;
+    list-style:none;
+  }
+  .nav-links a{
+    font-size:13px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    font-weight:500;
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0; height:1px;
+    background:var(--ink);
+    transition:width .3s ease;
+  }
+  .nav-links a:hover::after{ width:100%; }
+
+  .nav-cta{
+    font-size:13px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    font-weight:600;
+    border:1px solid var(--ink);
+    padding:9px 20px;
+    border-radius:999px;
+    transition: background .3s ease, color .3s ease;
+  }
+  .nav-cta:hover{ background:var(--ink); color:var(--paper); }
+
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:120px;
+    padding-bottom:60px;
+    overflow:hidden;
+  }
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+
+  .hero-eyebrow{ margin-bottom:28px; }
+
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(40px, 6vw, 76px);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:400;
+    color:var(--sage-deep);
+  }
+
+  .hero-sub{
+    margin-top:26px;
+    font-size:17px;
+    line-height:1.65;
+    color:rgba(51,47,38,0.78);
+    max-width:440px;
+  }
+
+  .hero-actions{
+    margin-top:38px;
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+
+  .btn-primary{
+    background:var(--ink);
+    color:var(--paper);
+    font-size:13px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    font-weight:600;
+    padding:16px 30px;
+    border-radius:999px;
+    transition:background .3s ease, transform .3s ease;
+    display:inline-block;
+  }
+  .btn-primary:hover{ background:var(--sage-deep); transform:translateY(-2px); }
+
+  .scroll-hint{
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:rgba(51,47,38,0.55);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-hint .stick{
+    width:1px; height:34px;
+    background:rgba(51,47,38,0.35);
+    position:relative;
+    overflow:hidden;
+  }
+  .scroll-hint .stick::after{
+    content:"";
+    position:absolute; top:-100%; left:0;
+    width:100%; height:100%;
+    background:var(--sage-deep);
+    animation: stickFall 1.8s ease-in-out infinite;
+  }
+  @keyframes stickFall{
+    0%{ top:-100%; }
+    60%{ top:100%; }
+    100%{ top:100%; }
+  }
+
+  /* hero plan drawing */
+  .plan-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .plan-wrap svg{
+    width:100%;
+    height:auto;
+    max-width:460px;
+  }
+  .plan-line{
+    fill:none;
+    stroke:var(--ink);
+    stroke-width:1.4;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-dasharray:1400;
+    stroke-dashoffset:1400;
+    animation: drawPlan 2.6s ease forwards .3s;
+  }
+  .plan-line.accent{
+    stroke:var(--sage-deep);
+  }
+  .plan-fill{
+    fill:var(--sage);
+    opacity:0;
+    animation: fadeFill 1s ease forwards 2.2s;
+  }
+  .plan-dim{
+    fill:none;
+    stroke: rgba(51,47,38,0.45);
+    stroke-width:0.8;
+    stroke-dasharray:2 3;
+    opacity:0;
+    animation: fadeFill .8s ease forwards 2.6s;
+  }
+  .plan-label{
+    font-family:var(--sans);
+    font-size:9px;
+    letter-spacing:0.08em;
+    fill: rgba(51,47,38,0.6);
+    opacity:0;
+    animation: fadeFill .8s ease forwards 2.8s;
+  }
+  @keyframes drawPlan{ to{ stroke-dashoffset:0; } }
+  @keyframes fadeFill{ to{ opacity:1; } }
+
+  @media (prefers-reduced-motion: reduce){
+    .plan-line, .plan-fill, .plan-dim, .plan-label, .scroll-hint .stick::after{
+      animation:none !important;
+      stroke-dashoffset:0 !important;
+      opacity:1 !important;
+    }
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-band{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:18px 0;
+    overflow:hidden;
+    background:var(--paper);
+  }
+  .marquee-track{
+    display:flex;
+    width:max-content;
+    animation: scrollLeft 42s linear infinite;
+  }
+  .marquee-track span{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    color: rgba(51,47,38,0.55);
+    padding:0 28px;
+    white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:28px;
+  }
+  .marquee-track span::after{
+    content:"◆";
+    font-style:normal;
+    font-size:8px;
+    color:var(--sage-deep);
+  }
+  @keyframes scrollLeft{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{ animation:none; }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:130px 0; }
+  .section-head{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+    align-items:end;
+    margin-bottom:72px;
+  }
+  .section-head h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(30px, 4vw, 48px);
+    line-height:1.08;
+    margin-top:18px;
+  }
+  .section-head h2 em{ font-style:italic; color:var(--sage-deep); }
+  .section-head .lead{
+    font-size:16px;
+    line-height:1.7;
+    color: rgba(51,47,38,0.72);
+    align-self:end;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--paper); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap:70px;
+    align-items:center;
+  }
+  .about-figure{
+    position:relative;
+    aspect-ratio: 4/5;
+    background: linear-gradient(155deg, var(--sage) 0%, var(--sage-deep) 100%);
+    border-radius:6px;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:28px;
+  }
+  .about-figure svg{ position:absolute; inset:0; width:100%; height:100%; opacity:0.5; }
+  .about-figure .tag{
+    position:relative;
+    color:var(--paper);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:15px;
+    line-height:1.5;
+  }
+  .about-figure .tag small{
+    display:block;
+    font-family:var(--sans);
+    font-style:normal;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    opacity:0.8;
+    margin-top:8px;
+  }
+
+  .about-text p{
+    font-size:17px;
+    line-height:1.75;
+    color: rgba(51,47,38,0.82);
+    margin-bottom:22px;
+  }
+  .about-text p:first-child{
+    font-family:var(--serif);
+    font-size:23px;
+    line-height:1.5;
+    color:var(--ink);
+  }
+
+  .quote{
+    margin-top:36px;
+    padding-left:24px;
+    border-left:2px solid var(--sage-deep);
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:18px;
+    line-height:1.6;
+    color:var(--sage-deep);
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--sand);
+    padding:42px 34px;
+    transition: background .35s ease;
+  }
+  .service-card:hover{ background:var(--paper); }
+  .service-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:14px;
+    color:var(--clay);
+  }
+  .service-icon{
+    margin:22px 0 26px;
+    width:38px; height:38px;
+  }
+  .service-icon svg{ width:100%; height:100%; }
+  .service-card h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:21px;
+    margin-bottom:12px;
+  }
+  .service-card p{
+    font-size:14.5px;
+    line-height:1.65;
+    color: rgba(51,47,38,0.7);
+    margin-bottom:18px;
+  }
+  .service-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .service-tags span{
+    font-size:11px;
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+    color:var(--sage-deep);
+    border:1px solid rgba(107,117,97,0.35);
+    padding:5px 11px;
+    border-radius:999px;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{ background:var(--paper); }
+  .process-list{
+    border-top:1px solid var(--line);
+  }
+  .process-row{
+    display:grid;
+    grid-template-columns: 90px 1fr 1.3fr 50px;
+    gap:30px;
+    align-items:center;
+    padding:34px 0;
+    border-bottom:1px solid var(--line);
+    transition: padding-left .35s ease;
+  }
+  .process-row:hover{ padding-left:14px; }
+  .process-num{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:30px;
+    color:var(--clay);
+  }
+  .process-row h3{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:23px;
+  }
+  .process-row p{
+    font-size:15px;
+    line-height:1.65;
+    color: rgba(51,47,38,0.7);
+  }
+  .process-arrow{
+    font-size:20px;
+    color:var(--sage-deep);
+    text-align:right;
+    transition: transform .35s ease;
+  }
+  .process-row:hover .process-arrow{ transform:translateX(6px); }
+
+  /* ---------- CTA / CONTACT ---------- */
+  .cta{
+    position:relative;
+    background:var(--ink);
+    color:var(--paper);
+    overflow:hidden;
+  }
+  .cta::before{
+    content:"";
+    position:absolute;
+    top:-30%; right:-10%;
+    width:560px; height:560px;
+    background: radial-gradient(circle, rgba(107,117,97,0.35) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .cta-grid{
+    position:relative;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:60px;
+  }
+  .cta h2{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(32px, 5vw, 56px);
+    line-height:1.1;
+  }
+  .cta h2 em{ font-style:italic; color:#B9C4AC; }
+
+  .cta-eyebrow{ color:#B9C4AC; }
+  .cta-eyebrow::before{ background:#B9C4AC; }
+
+  .cta-meta{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-size:15px;
+    color: rgba(251,249,244,0.75);
+  }
+  .cta-meta a{
+    color:var(--paper);
+    border-bottom:1px solid rgba(251,249,244,0.4);
+  }
+
+  .form-card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:10px;
+    padding:38px;
+  }
+  .form-card h3{
+    font-family:var(--serif);
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:22px;
+  }
+  .field{
+    margin-bottom:18px;
+  }
+  .field label{
+    display:block;
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color: rgba(51,47,38,0.6);
+    margin-bottom:7px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    border:none;
+    border-bottom:1px solid rgba(51,47,38,0.25);
+    background:transparent;
+    font-family:var(--sans);
+    font-size:15px;
+    padding:9px 2px;
+    color:var(--ink);
+    resize:none;
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:none;
+    border-bottom-color:var(--sage-deep);
+  }
+  .field textarea{ min-height:70px; }
+
+  .form-submit{
+    width:100%;
+    margin-top:10px;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:999px;
+    padding:15px 0;
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    font-weight:600;
+    cursor:pointer;
+    transition: background .3s ease;
+  }
+  .form-submit:hover{ background:var(--sage-deep); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 0;
+    background:var(--ink);
+    color: rgba(251,249,244,0.6);
+  }
+  .footer-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    font-size:13px;
+  }
+  .footer-row a{ color: rgba(251,249,244,0.85); }
+  .footer-row .fl{ display:flex; gap:24px; }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition: opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    .nav-links{ display:none; }
+    .nav-cta{ display:none; }
+    .nav-toggle{
+      display:block;
+      font-size:13px;
+      letter-spacing:0.05em;
+      text-transform:uppercase;
+      border:1px solid var(--ink);
+      padding:9px 18px;
+      border-radius:999px;
+    }
+    .hero-grid{ grid-template-columns:1fr; }
+    .plan-wrap{ order:-1; margin-bottom:10px; }
+    .plan-wrap svg{ max-width:300px; }
+    .hero-sub{ max-width:none; }
+    .section-head{ grid-template-columns:1fr; gap:18px; }
+    .about-grid{ grid-template-columns:1fr; gap:40px; }
+    .about-figure{ aspect-ratio:16/10; }
+    .services-grid{ grid-template-columns:1fr; }
+    .process-row{ grid-template-columns: 50px 1fr; }
+    .process-row p{ grid-column:2/3; }
+    .process-arrow{ display:none; }
+    .cta-grid{ grid-template-columns:1fr; gap:44px; }
+    section{ padding:90px 0; }
+    .wrap{ padding:0 22px; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Vai al contenuto</a>
+
+<header id="siteHeader">
+  <div class="wrap">
+    <nav>
+      <a href="#" class="logo">AeD <span>Interior Designer</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">Chi sono</a></li>
+        <li><a href="#services">Servizi</a></li>
+        <li><a href="#process">Metodo</a></li>
+        <li><a href="#contact">Contatti</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">Richiedi un sopralluogo</a>
+      <a href="#contact" class="nav-toggle">Contatti</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow hero-eyebrow">Architettura d'interni</div>
+        <h1>Spazi che <em>respirano</em><br>come chi li abita</h1>
+        <p class="hero-sub">AeD Interior Designer progetta interni, ristrutturazioni e giardini con lo stesso rigore con cui si disegna una pianta: ogni misura ha un perché, ogni materiale una ragione d'essere.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn-primary">Prenota una consulenza</a>
+          <div class="scroll-hint">
+            <span>Scorri</span>
+            <span class="stick"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="plan-wrap">
+        <svg viewBox="0 0 420 460" aria-hidden="true">
+          <!-- planimetria stilizzata che si disegna -->
+          <rect class="plan-line" x="30" y="30" width="360" height="400" rx="2"/>
+          <line class="plan-line" x1="30" y1="190" x2="230" y2="190"/>
+          <line class="plan-line" x1="230" y1="30" x2="230" y2="300"/>
+          <line class="plan-line accent" x1="230" y1="300" x2="390" y2="300"/>
+          <line class="plan-line" x1="120" y1="190" x2="120" y2="430"/>
+
+          <!-- porte (archi) -->
+          <path class="plan-line accent" d="M 120 250 A 40 40 0 0 1 160 290" />
+          <path class="plan-line accent" d="M 230 230 A 35 35 0 0 0 265 195" />
+
+          <!-- arredo essenziale -->
+          <rect class="plan-fill" x="55" y="55" width="60" height="34" rx="2"/>
+          <circle class="plan-fill" cx="300" cy="110" r="26"/>
+          <rect class="plan-fill" x="270" y="340" width="100" height="18" rx="9"/>
+          <rect class="plan-fill" x="150" y="370" width="50" height="50" rx="2"/>
+
+          <!-- quote -->
+          <line class="plan-dim" x1="30" y1="445" x2="390" y2="445"/>
+          <line class="plan-dim" x1="405" y1="30" x2="405" y2="430"/>
+          <text class="plan-label" x="190" y="450">8,40 m</text>
+          <text class="plan-label" x="408" y="235" transform="rotate(90 408 235)">9,10 m</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-band">
+    <div class="marquee-track" aria-hidden="true">
+      <span>Interior Design</span><span>Ristrutturazioni</span><span>Progettazione Outdoor</span><span>Render 3D</span><span>Direzione Lavori</span><span>Pratiche Edilizie</span><span>Interior Design</span><span>Ristrutturazioni</span><span>Progettazione Outdoor</span><span>Render 3D</span><span>Direzione Lavori</span><span>Pratiche Edilizie</span>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap">
+      <div class="about-grid">
+        <div class="about-figure reveal">
+          <svg viewBox="0 0 300 375" preserveAspectRatio="none">
+            <line x1="0" y1="0" x2="300" y2="375" stroke="#FBF9F4" stroke-width="0.6"/>
+            <line x1="300" y1="0" x2="0" y2="375" stroke="#FBF9F4" stroke-width="0.6"/>
+            <circle cx="150" cy="187" r="90" fill="none" stroke="#FBF9F4" stroke-width="0.6"/>
+          </svg>
+          <div class="tag">"Lo spazio si progetta dal vuoto, non dall'arredo."
+            <small>— Luigia Iannelli, fondatrice</small>
+          </div>
+        </div>
+
+        <div class="about-text reveal">
+          <div class="eyebrow">Chi sono</div>
+          <p style="margin-top:18px;">Mi chiamo Luigia Iannelli e da oltre 30 anni progetto case, studi e giardini per chi vuole abitare uno spazio su misura.</p>
+          <p>La mia impresa AeD Interior Designer costruisce armonia in struttura, luce, percorsi, materiali e proporzioni.</p>
+          <p>Segue ogni progetto dal rilievo alla posa in opera, con un metodo che unisce precisione tecnica e ascolto reale di chi quello spazio lo vivrà ogni giorno.</p>
+          <div class="quote">"Ogni progetto inizia da una domanda: come vuoi sentirti, quando torni a casa?"</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Cosa faccio</div>
+          <h2>Servizi su misura,<br>dal <em>rilievo</em> alla posa</h2>
+        </div>
+        <p class="lead">Ogni intervento parte da un sopralluogo e si chiude in cantiere. Tra questi due momenti, un metodo che non cambia: capire prima di disegnare.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#6B7561" stroke-width="1.3"><rect x="4" y="4" width="30" height="30" rx="1"/><path d="M4 19h30M19 4v30"/></svg>
+          </div>
+          <h3>Progettazione d'interni</h3>
+          <p>Layout, distribuzione degli spazi, scelta di materiali e finiture: il progetto completo di un ambiente, dalla pianta al dettaglio costruttivo.</p>
+          <div class="service-tags"><span>Layout</span><span>Materiali</span><span>Capitolato</span></div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#6B7561" stroke-width="1.3"><path d="M6 34V14l13-9 13 9v20"/><path d="M14 34V21h10v13"/></svg>
+          </div>
+          <h3>Ristrutturazioni</h3>
+          <p>Ristrutturazioni totali o parziali di case e uffici, dalla demolizione alla consegna chiavi in mano, con direzione lavori e pratiche edilizie incluse.</p>
+          <div class="service-tags"><span>Direzione lavori</span><span>Pratiche</span><span>Cantiere</span></div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#6B7561" stroke-width="1.3"><circle cx="19" cy="19" r="6"/><path d="M19 2v6M19 30v6M2 19h6M30 19h6M7 7l4 4M27 27l4 4M31 7l-4 4M11 27l-4 4"/></svg>
+          </div>
+          <h3>Spazi outdoor</h3>
+          <p>Terrazzi, giardini e patii progettati come estensione della casa: scelta del verde, pavimentazioni, ombreggiamento e illuminazione serale.</p>
+          <div class="service-tags"><span>Giardini</span><span>Terrazzi</span><span>Illuminazione</span></div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#6B7561" stroke-width="1.3"><rect x="5" y="9" width="28" height="20" rx="1"/><circle cx="13" cy="17" r="3"/><path d="M5 26l8-7 6 5 7-8 7 6"/></svg>
+          </div>
+          <h3>Render & visualizzazione 3D</h3>
+          <p>Rendering fotorealistici e tour virtuali per vedere lo spazio prima ancora che esista, utili anche per validare scelte con fornitori e artigiani.</p>
+          <div class="service-tags"><span>Render</span><span>Tour 3D</span><span>Moodboard</span></div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-num">05</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#6B7561" stroke-width="1.3"><path d="M9 32V12a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v20"/><path d="M9 32h20M15 32v-6h8v6"/></svg>
+          </div>
+          <h3>Arredo su misura</h3>
+          <p>Disegno di mobili e complementi su misura realizzati da artigiani selezionati, per gli spazi dove il prodotto di serie non basta.</p>
+          <div class="service-tags"><span>Falegnameria</span><span>Disegno tecnico</span></div>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-num">06</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 38 38" fill="none" stroke="#6B7561" stroke-width="1.3"><path d="M19 4l4 9 10 1-7.5 7 2 10L19 26l-8.5 5 2-10L5 14l10-1z"/></svg>
+          </div>
+          <h3>Consulenza e styling</h3>
+          <p>Una sessione mirata per chi ha già uno spazio e vuole solo la direzione giusta: colori, luce, accostamenti, piccoli interventi ad alto impatto.</p>
+          <div class="service-tags"><span>Color consulting</span><span>Styling</span></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">Come lavoro</div>
+          <h2>Quattro fasi,<br>un solo <em>filo conduttore</em></h2>
+        </div>
+        <p class="lead">Dal primo sopralluogo alla consegna delle chiavi, ogni fase ha un output chiaro: niente passaggi a vista, niente sorprese in cantiere.</p>
+      </div>
+
+      <div class="process-list">
+        <div class="process-row reveal">
+          <div class="process-num">01</div>
+          <h3>Sopralluogo & ascolto</h3>
+          <p>Visito lo spazio, rilevo le misure reali e ascolto come lo vivi: abitudini, necessità, budget e tempi diventano il punto di partenza del progetto.</p>
+          <div class="process-arrow">→</div>
+        </div>
+        <div class="process-row reveal">
+          <div class="process-num">02</div>
+          <h3>Concept & progetto</h3>
+          <p>Sviluppo planimetrie, moodboard e render per definire spazi, materiali e budget di massima, fino all'approvazione del progetto definitivo.</p>
+          <div class="process-arrow">→</div>
+        </div>
+        <div class="process-row reveal">
+          <div class="process-num">03</div>
+          <h3>Pratiche & capitolato</h3>
+          <p>Prepariamo le pratiche edilizie necessarie e il capitolato lavori con tempi, fornitori e costi, così da affrontare il cantiere senza imprevisti.</p>
+          <div class="process-arrow">→</div>
+        </div>
+        <div class="process-row reveal">
+          <div class="process-num">04</div>
+          <h3>Cantiere & consegna</h3>
+          <p>Seguo i lavori passo passo con sopralluoghi regolari, fino alla consegna dello spazio finito, arredato e pronto per essere vissuto.</p>
+          <div class="process-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta" id="contact">
+    <div class="wrap cta-grid">
+      <div>
+        <div class="eyebrow cta-eyebrow">Iniziamo</div>
+        <h2 style="margin-top:18px;">Raccontami<br>il tuo <em>spazio</em>.</h2>
+        <div class="cta-meta">
+          <a href="mailto:luigiaiannelli62@gmail.com">luigiaiannelli62@gmail.com</a>
+          <a href="tel:+393487614687">+39 348 7614687</a>
+          <span>show-room Via Ammiraglio Gregorio Ronca, 27 - 83100 Avellino AV</span>
+        </div>
+      </div>
+
+      <form class="form-card reveal" id="contactForm">
+        <h3>Richiedi un primo sopralluogo</h3>
+        <div class="field">
+          <label for="f-name">Nome e cognome *</label>
+          <input id="f-name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="f-email">Email *</label>
+          <input id="f-email" type="email" required>
+        </div>
+        <div class="field">
+          <label for="f-type">Tipo di progetto</label>
+          <select id="f-type">
+            <option>Interni</option>
+            <option>Ristrutturazione</option>
+            <option>Outdoor / giardino</option>
+            <option>Consulenza & styling</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-msg">Raccontami il progetto *</label>
+          <textarea id="f-msg" required></textarea>
+        </div>
+        <button type="submit" class="form-submit">Invia richiesta</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <span>AeD Interior Designer di Luigia Iannelli — © 2026 Tutti i diritti riservati - ideazione Nycheia</span>
+    <div class="fl">
+      <a href="#about">Chi sono</a>
+      <a href="#services">Servizi</a>
+      <a href="#contact">Contatti</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // header on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  reveals.forEach(el => io.observe(el));
+
+  // form (demo, no backend)
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('.form-submit');
+    const original = btn.textContent;
+    btn.textContent = 'Richiesta inviata ✓';
+    this.reset();
+    setTimeout(() => { btn.textContent = original; }, 2600);
+  });
+</script>
+
+</body>
+</html>
