@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AeD Interior Designer</title>
-<meta name="description" content="AeD Interior Designer di Luigia Iannelli progetta interni, ristrutturazioni e spazi outdoor con metodo, materia e luce. Architettura su misura delle tue esigenze.">
+<title>AeD Interior Design — Architettura d'interni</title>
+<meta name="description" content="AeD Interior Design progetta interni, ristrutturazioni e spazi outdoor con metodo, materia e luce. Architettura su misura a Roma e in tutta Italia.">
 <meta name="theme-color" content="#6B7561">
 <style>
   :root{
@@ -14,6 +14,8 @@
     --sage:#6B7561;
     --sage-deep:#4D5645;
     --clay:#9B8A6E;
+    --rust:#C0392B;
+    --rust-deep:#9F2F22;
     --line: rgba(51,47,38,0.14);
     --serif: Georgia, "Iowan Old Style", "Palatino Linotype", "URW Palladio L", Palatino, serif;
     --sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -95,7 +97,7 @@
     font-weight:500;
     letter-spacing:0.01em;
   }
-  .logo span{ color:var(--sage-deep); font-style:italic; }
+  .logo span{ color:var(--rust); font-style:italic; }
 
   .nav-links{
     display:flex;
@@ -124,12 +126,13 @@
     letter-spacing:0.05em;
     text-transform:uppercase;
     font-weight:600;
-    border:1px solid var(--ink);
+    border:1px solid var(--rust);
+    color:var(--rust);
     padding:9px 20px;
     border-radius:999px;
     transition: background .3s ease, color .3s ease;
   }
-  .nav-cta:hover{ background:var(--ink); color:var(--paper); }
+  .nav-cta:hover{ background:var(--rust); color:var(--paper); }
 
   .nav-toggle{ display:none; }
 
@@ -183,7 +186,7 @@
   }
 
   .btn-primary{
-    background:var(--ink);
+    background:var(--rust);
     color:var(--paper);
     font-size:13px;
     letter-spacing:0.05em;
@@ -194,7 +197,7 @@
     transition:background .3s ease, transform .3s ease;
     display:inline-block;
   }
-  .btn-primary:hover{ background:var(--sage-deep); transform:translateY(-2px); }
+  .btn-primary:hover{ background:var(--rust-deep); transform:translateY(-2px); }
 
   .scroll-hint{
     font-size:12px;
@@ -499,7 +502,7 @@
   /* ---------- CTA / CONTACT ---------- */
   .cta{
     position:relative;
-    background:var(--ink);
+    background:var(--rust);
     color:var(--paper);
     overflow:hidden;
   }
@@ -508,7 +511,7 @@
     position:absolute;
     top:-30%; right:-10%;
     width:560px; height:560px;
-    background: radial-gradient(circle, rgba(107,117,97,0.35) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(255,255,255,0.16) 0%, transparent 70%);
     pointer-events:none;
   }
   .cta-grid{
@@ -523,10 +526,10 @@
     font-size:clamp(32px, 5vw, 56px);
     line-height:1.1;
   }
-  .cta h2 em{ font-style:italic; color:#B9C4AC; }
+  .cta h2 em{ font-style:italic; color:#F4DCC8; }
 
-  .cta-eyebrow{ color:#B9C4AC; }
-  .cta-eyebrow::before{ background:#B9C4AC; }
+  .cta-eyebrow{ color:#F8E5D5; }
+  .cta-eyebrow::before{ background:#F8E5D5; }
 
   .cta-meta{
     margin-top:30px;
@@ -534,11 +537,37 @@
     flex-direction:column;
     gap:10px;
     font-size:15px;
-    color: rgba(251,249,244,0.75);
+    color: rgba(251,249,244,0.88);
   }
   .cta-meta a{
     color:var(--paper);
-    border-bottom:1px solid rgba(251,249,244,0.4);
+    border-bottom:1px solid rgba(251,249,244,0.5);
+  }
+
+  .showroom{
+    margin-top:42px;
+    padding-top:30px;
+    border-top:1px solid rgba(251,249,244,0.3);
+    max-width:320px;
+  }
+  .showroom-label{
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:#F8E5D5;
+    margin-bottom:10px;
+  }
+  .showroom-address{
+    font-family:var(--serif);
+    font-size:18px;
+    line-height:1.5;
+    color:var(--paper);
+  }
+  .showroom-hours{
+    margin-top:8px;
+    font-size:13.5px;
+    color: rgba(251,249,244,0.8);
   }
 
   .form-card{
@@ -584,7 +613,7 @@
   .form-submit{
     width:100%;
     margin-top:10px;
-    background:var(--ink);
+    background:var(--rust);
     color:var(--paper);
     border:none;
     border-radius:999px;
@@ -597,7 +626,7 @@
     cursor:pointer;
     transition: background .3s ease;
   }
-  .form-submit:hover{ background:var(--sage-deep); }
+  .form-submit:hover{ background:var(--rust-deep); }
 
   /* ---------- FOOTER ---------- */
   footer{
@@ -661,7 +690,7 @@
 <header id="siteHeader">
   <div class="wrap">
     <nav>
-      <a href="#" class="logo">AeD <span>Interior Designer</span></a>
+      <a href="#" class="logo">AeD <span>Interior Design</span></a>
       <ul class="nav-links">
         <li><a href="#about">Chi sono</a></li>
         <li><a href="#services">Servizi</a></li>
@@ -682,7 +711,7 @@
       <div>
         <div class="eyebrow hero-eyebrow">Architettura d'interni</div>
         <h1>Spazi che <em>respirano</em><br>come chi li abita</h1>
-        <p class="hero-sub">AeD Interior Designer progetta interni, ristrutturazioni e giardini con lo stesso rigore con cui si disegna una pianta: ogni misura ha un perché, ogni materiale una ragione d'essere.</p>
+        <p class="hero-sub">AeD Interior Design progetta interni, ristrutturazioni e giardini con lo stesso rigore con cui si disegna una pianta: ogni misura ha un perché, ogni materiale una ragione d'essere.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">Prenota una consulenza</a>
           <div class="scroll-hint">
@@ -745,9 +774,9 @@
 
         <div class="about-text reveal">
           <div class="eyebrow">Chi sono</div>
-          <p style="margin-top:18px;">Mi chiamo Luigia Iannelli e da oltre 30 anni progetto case, studi e giardini per chi vuole abitare uno spazio su misura.</p>
-          <p>La mia impresa AeD Interior Designer costruisce armonia in struttura, luce, percorsi, materiali e proporzioni.</p>
-          <p>Segue ogni progetto dal rilievo alla posa in opera, con un metodo che unisce precisione tecnica e ascolto reale di chi quello spazio lo vivrà ogni giorno.</p>
+          <p style="margin-top:18px;">Mi chiamo Luigia Iannelli e da trent'anni progetto case, studi e giardini per chi vuole abitare uno spazio su misura, non un catalogo.</p>
+          <p>AeD Interior Design costruisce armonia in struttura, luce, percorsi, materiali e proporzioni.</p>
+          <p>Seguo ogni progetto dal rilievo alla posa in opera, con un metodo che unisce precisione tecnica e ascolto reale di chi quello spazio lo vivrà ogni giorno.</p>
           <div class="quote">"Ogni progetto inizia da una domanda: come vuoi sentirti, quando torni a casa?"</div>
         </div>
       </div>
@@ -879,8 +908,13 @@
         <h2 style="margin-top:18px;">Raccontami<br>il tuo <em>spazio</em>.</h2>
         <div class="cta-meta">
           <a href="mailto:luigiaiannelli62@gmail.com">luigiaiannelli62@gmail.com</a>
-          <a href="tel:+393487614687">+39 348 7614687</a>
-          <span>show-room Via Ammiraglio Gregorio Ronca, 27 - 83100 Avellino AV</span>
+          <a href="tel:+39 348 7614687">+39 348 7614687</a>
+        </div>
+
+        <div class="showroom">
+          <div class="showroom-label">Show Room</div>
+          <p class="showroom-address">Via Ammiraglio Gregorio Ronca, 27<br>83100 Avellino AV</p>
+          <p class="showroom-hours">Visite su appuntamento</p>
         </div>
       </div>
 
@@ -916,7 +950,7 @@
 
 <footer>
   <div class="wrap footer-row">
-    <span>AeD Interior Designer di Luigia Iannelli — © 2026 Tutti i diritti riservati - ideazione Nycheia</span>
+    <span>AeD Interior Design — © 2026 Tutti i diritti riservati</span>
     <div class="fl">
       <a href="#about">Chi sono</a>
       <a href="#services">Servizi</a>
