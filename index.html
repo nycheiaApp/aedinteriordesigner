@@ -552,6 +552,9 @@
     max-width:320px;
   }
   .showroom-label{
+    display:flex;
+    align-items:center;
+    gap:10px;
     font-size:12px;
     letter-spacing:0.14em;
     text-transform:uppercase;
@@ -559,14 +562,29 @@
     color:#F8E5D5;
     margin-bottom:10px;
   }
-  .showroom-map{
+  .showroom-map-icons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:16px;
+  }
+  .showroom-map-icons a{
     display:inline-flex;
     align-items:center;
-    gap:8px;
-    transition: color .25s ease;
+    gap:7px;
+    padding:8px 14px;
+    border-radius:999px;
+    border:1px solid rgba(251,249,244,0.35);
+    background:rgba(251,249,244,0.1);
+    color:var(--paper);
+    font-size:12.5px;
+    font-weight:500;
+    transition: background .25s ease, border-color .25s ease;
   }
-  .showroom-map svg{ flex-shrink:0; }
-  .showroom-map:hover{ color:var(--paper); text-decoration:underline; }
+  .showroom-map-icons a:hover{
+    background:rgba(251,249,244,0.22);
+    border-color:rgba(251,249,244,0.6);
+  }
   .showroom-address{
     font-family:var(--serif);
     font-size:18px;
@@ -926,12 +944,19 @@
         </div>
 
         <div class="showroom">
-          <a class="showroom-label showroom-map" href="https://www.google.it/maps/place/A%26D+Interior+Designer/@40.9127364,14.78115" target="_blank" rel="noopener noreferrer">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
-            Show Room
-          </a>
+          <div class="showroom-label">Show Room</div>
           <p class="showroom-address">Via Ammiraglio Gregorio Ronca, 27<br>83100 Avellino AV</p>
           <p class="showroom-hours">Visite su appuntamento</p>
+          <div class="showroom-map-icons">
+            <a href="https://maps.app.goo.gl/HYcu7tbXG2mQ3mXVA" target="_blank" rel="noopener noreferrer" aria-label="Apri in Google Maps" title="Apri in Google Maps">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="#4285F4" d="M12 2C7.86 2 4.5 5.36 4.5 9.5c0 5.5 7.5 12.5 7.5 12.5s7.5-7 7.5-12.5C19.5 5.36 16.14 2 12 2z"/><circle cx="12" cy="9.5" r="3.2" fill="#FBF9F4"/></svg>
+              Google Maps
+            </a>
+            <a href="https://maps.apple/p/u00~TYeDZsB1ZW" target="_blank" rel="noopener noreferrer" aria-label="Apri in Apple Mappe" title="Apri in Apple Mappe">
+              <svg viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="currentColor" d="M12 2c-3.5 0-6.5 2.8-6.5 6.8 0 4.7 5.6 11.4 6.1 12 .2.2.6.2.8 0 .5-.6 6.1-7.3 6.1-12C18.5 4.8 15.5 2 12 2z"/><circle cx="12" cy="8.6" r="2.6" fill="var(--rust)"/></svg>
+              Apple Mappe
+            </a>
+          </div>
         </div>
       </div>
 
