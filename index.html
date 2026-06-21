@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>AeD Interior Design — Architettura d'interni</title>
-<meta name="description" content="AeD Interior Design progetta interni, ristrutturazioni e spazi outdoor con metodo, materia e luce. Architettura su misura a Roma e in tutta Italia.">
+<title>A&D Interior Design — Architettura d'interni</title>
+<meta name="description" content="A&D Interior Design progetta interni, ristrutturazioni e spazi outdoor con metodo, materia e luce. Architettura su misura a Roma e in tutta Italia.">
 <meta name="theme-color" content="#6B7561">
 <style>
   :root{
@@ -94,10 +94,11 @@
   .logo{
     font-family:var(--serif);
     font-size:21px;
-    font-weight:500;
+    font-weight:700;
     letter-spacing:0.01em;
+    color:var(--sage-deep);
   }
-  .logo span{ color:var(--rust); font-style:italic; }
+  .logo span{ color:var(--rust); font-style:italic; font-weight:700; }
 
   .nav-links{
     display:flex;
@@ -167,7 +168,7 @@
   .hero h1 em{
     font-style:italic;
     font-weight:400;
-    color:var(--sage-deep);
+    color:var(--rust);
   }
 
   .hero-sub{
@@ -524,7 +525,7 @@
     font-family:var(--serif);
     font-weight:400;
     font-size:clamp(32px, 5vw, 56px);
-    line-height:1.1;
+    line-height:1.5;
   }
   .cta h2 em{ font-style:italic; color:#F4DCC8; }
 
@@ -558,6 +559,14 @@
     color:#F8E5D5;
     margin-bottom:10px;
   }
+  .showroom-map{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition: color .25s ease;
+  }
+  .showroom-map svg{ flex-shrink:0; }
+  .showroom-map:hover{ color:var(--paper); text-decoration:underline; }
   .showroom-address{
     font-family:var(--serif);
     font-size:18px;
@@ -690,7 +699,7 @@
 <header id="siteHeader">
   <div class="wrap">
     <nav>
-      <a href="#" class="logo">AeD <span>Interior Design</span></a>
+      <a href="#" class="logo">A&amp;D <span>Interior Design</span></a>
       <ul class="nav-links">
         <li><a href="#about">Chi sono</a></li>
         <li><a href="#services">Servizi</a></li>
@@ -711,7 +720,7 @@
       <div>
         <div class="eyebrow hero-eyebrow">Architettura d'interni</div>
         <h1>Spazi che <em>respirano</em><br>come chi li abita</h1>
-        <p class="hero-sub">AeD Interior Design progetta interni, ristrutturazioni e giardini con lo stesso rigore con cui si disegna una pianta: ogni misura ha un perché, ogni materiale una ragione d'essere.</p>
+        <p class="hero-sub">A&amp;D Interior Design progetta interni, ristrutturazioni e giardini con lo stesso rigore con cui si disegna una pianta: ogni misura ha un perché, ogni materiale una ragione d'essere.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn-primary">Prenota una consulenza</a>
           <div class="scroll-hint">
@@ -736,7 +745,7 @@
 
           <!-- arredo essenziale -->
           <rect class="plan-fill" x="55" y="55" width="60" height="34" rx="2"/>
-          <circle class="plan-fill" cx="300" cy="110" r="26"/>
+          <circle class="plan-fill" cx="300" cy="110" r="26" style="fill:var(--rust);"/>
           <rect class="plan-fill" x="270" y="340" width="100" height="18" rx="9"/>
           <rect class="plan-fill" x="150" y="370" width="50" height="50" rx="2"/>
 
@@ -775,7 +784,7 @@
         <div class="about-text reveal">
           <div class="eyebrow">Chi sono</div>
           <p style="margin-top:18px;">Mi chiamo Luigia Iannelli e da trent'anni progetto case, studi e giardini per chi vuole abitare uno spazio su misura, non un catalogo.</p>
-          <p>AeD Interior Design costruisce armonia in struttura, luce, percorsi, materiali e proporzioni.</p>
+          <p>A&amp;D Interior Design costruisce armonia in struttura, luce, percorsi, materiali e proporzioni.</p>
           <p>Seguo ogni progetto dal rilievo alla posa in opera, con un metodo che unisce precisione tecnica e ascolto reale di chi quello spazio lo vivrà ogni giorno.</p>
           <div class="quote">"Ogni progetto inizia da una domanda: come vuoi sentirti, quando torni a casa?"</div>
         </div>
@@ -907,12 +916,15 @@
         <div class="eyebrow cta-eyebrow">Iniziamo</div>
         <h2 style="margin-top:18px;">Raccontami<br>il tuo <em>spazio</em>.</h2>
         <div class="cta-meta">
-          <a href="mailto:luigiaiannelli62@gmail.com">luigiaiannelli62@gmail.com</a>
-          <a href="tel:+39 348 7614687">+39 348 7614687</a>
+          <a href="mailto:luigia@aedinteriordesign.it">luigia@aedinteriordesign.it</a>
+          <a href="tel:+390612345678">+39 06 1234 5678</a>
         </div>
 
         <div class="showroom">
-          <div class="showroom-label">Show Room</div>
+          <a class="showroom-label showroom-map" href="https://www.google.it/maps/place/A%26D+Interior+Designer/@40.9127364,14.78115" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s7-7.58 7-12.5A7 7 0 0 0 5 9.5C5 14.42 12 22 12 22z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+            Show Room
+          </a>
           <p class="showroom-address">Via Ammiraglio Gregorio Ronca, 27<br>83100 Avellino AV</p>
           <p class="showroom-hours">Visite su appuntamento</p>
         </div>
@@ -950,7 +962,7 @@
 
 <footer>
   <div class="wrap footer-row">
-    <span>AeD Interior Design — © 2026 Tutti i diritti riservati</span>
+    <span>A&amp;D Interior Design — ideazione Nycheia — © 2026 Tutti i diritti riservati</span>
     <div class="fl">
       <a href="#about">Chi sono</a>
       <a href="#services">Servizi</a>
