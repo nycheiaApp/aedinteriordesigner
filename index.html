@@ -939,8 +939,8 @@
         <div class="eyebrow cta-eyebrow">Iniziamo</div>
         <h2 style="margin-top:18px;">Raccontami<br>il tuo <em>spazio</em>.</h2>
         <div class="cta-meta">
-          <a href="mailto:luigiaiannelli62@gmail.com">luigiaiannelli62@gmail.com</a>
-          <a href="tel:+393487614687">+39 3487614687</a>
+          <a href="mailto:luigia@aedinteriordesign.it">luigia@aedinteriordesign.it</a>
+          <a href="tel:+390612345678">+39 06 1234 5678</a>
         </div>
 
         <div class="showroom">
@@ -1020,14 +1020,32 @@
   }, { threshold: 0.15 });
   reveals.forEach(el => io.observe(el));
 
-  // form (demo, no backend)
+  // form — invio via mailto
   document.getElementById('contactForm').addEventListener('submit', function(e){
     e.preventDefault();
+    const nome    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const tipo    = document.getElementById('f-type').value;
+    const msg     = document.getElementById('f-msg').value.trim();
+
+    const oggetto = encodeURIComponent('Nuova richiesta da ' + nome + ' — A&D Interior Design');
+    const corpo   = encodeURIComponent(
+      'NUOVA RICHIESTA DAL SITO A&D Interior Design\n' +
+      '─────────────────────────────────\n' +
+      'Nome e cognome : ' + nome  + '\n' +
+      'Email          : ' + email + '\n' +
+      'Tipo progetto  : ' + tipo  + '\n' +
+      '─────────────────────────────────\n' +
+      'Messaggio:\n' + msg + '\n'
+    );
+
+    window.location.href = 'mailto:luigiaiannelli62@gmail.com?subject=' + oggetto + '&body=' + corpo;
+
     const btn = this.querySelector('.form-submit');
     const original = btn.textContent;
-    btn.textContent = 'Richiesta inviata ✓';
+    btn.textContent = 'Apertura client email…';
     this.reset();
-    setTimeout(() => { btn.textContent = original; }, 2600);
+    setTimeout(() => { btn.textContent = original; }, 3000);
   });
 </script>
 
